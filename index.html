@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vepada Nandini — UI/UX Designer</title>
+<meta name="description" content="Portfolio of Vepada Nandini, UI/UX Designer. Product design work on LetsHyre and Digital Photoframes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#F1EFEA;
+    --panel:#FFFFFF;
+    --ink:#17181C;
+    --muted:#63636B;
+    --line:#D8D5CD;
+    --accent:#3730F5;
+    --accent-soft:#E7E5FC;
+    --coral:#FF5B35;
+    --radius:2px;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    background-image:
+      radial-gradient(circle, rgba(23,24,28,0.10) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    letter-spacing:-0.01em;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(241,239,234,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:64px;
+  }
+  .mark{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .mark-dot{
+    width:9px; height:9px;
+    background:var(--accent);
+    border-radius:2px;
+    display:inline-block;
+  }
+  .navlinks{
+    display:flex;
+    gap:28px;
+    list-style:none;
+  }
+  .navlinks a{
+    text-decoration:none;
+    font-size:0.92rem;
+    color:var(--muted);
+    transition:color 0.15s ease;
+  }
+  .navlinks a:hover{ color:var(--ink); }
+  .navlinks a:focus-visible, a:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+  .nav-cta{
+    font-size:0.88rem;
+    text-decoration:none;
+    padding:8px 14px;
+    border:1px solid var(--ink);
+    border-radius:var(--radius);
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ background:var(--ink); color:var(--canvas); }
+  .navlinks-mobile{ display:none; }
+
+  @media (max-width:720px){
+    .navlinks{ display:none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:96px 0 72px;
+    position:relative;
+  }
+  .frame-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.82rem;
+    color:var(--muted);
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:5px 10px 5px 8px;
+    border-radius:var(--radius);
+    margin-bottom:28px;
+  }
+  .frame-tag span.dot{
+    width:6px;height:6px;background:var(--accent);border-radius:50%;
+  }
+
+  .hero-frame{
+    position:relative;
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:56px 48px 48px;
+    border-radius:var(--radius);
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:32px;
+    align-items:center;
+  }
+  .hero-photo{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    height:60000;
+  }
+  .hero-photo img{
+    width:100%;
+    max-width:60000px;
+    height:auto;
+    display:block;
+  }
+  @media (max-width:800px){
+    .hero-frame{ grid-template-columns:1fr; }
+    .hero-photo{ order:-1; max-width:600px; margin:0 auto; }
+    .hero-photo img{ max-width:180px; }
+  }
+  .hero-frame::before,
+  .hero-frame::after,
+  .corner-tl, .corner-br{
+    content:"";
+    position:absolute;
+    width:14px; height:14px;
+    border-color:var(--accent);
+  }
+  .hero-frame::before{
+    top:-1px; left:-1px;
+    border-top:2px solid var(--accent);
+    border-left:2px solid var(--accent);
+  }
+  .hero-frame::after{
+    bottom:-1px; right:-1px;
+    border-bottom:2px solid var(--accent);
+    border-right:2px solid var(--accent);
+  }
+
+  .hero h1{
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    font-weight:600;
+    line-height:1.12;
+    max-width:15ch;
+  }
+  .hero-role{
+    margin-top:22px;
+    font-size:1.05rem;
+    color:var(--muted);
+    max-width:52ch;
+  }
+  .hero-role strong{ color:var(--ink); font-weight:600; }
+
+  .hero-dim{
+    position:absolute;
+    bottom:-13px;
+    right:20px;
+    background:var(--canvas);
+    padding:0 8px;
+    font-size:0.78rem;
+    color:var(--muted);
+  }
+
+  .hero-actions{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--ink);
+    color:var(--canvas);
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:var(--radius);
+    font-size:0.92rem;
+    font-weight:500;
+    border:1px solid var(--ink);
+  }
+  .btn-primary:hover{ background:var(--accent); border-color:var(--accent); }
+  .btn-secondary{
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:var(--radius);
+    font-size:0.92rem;
+    font-weight:500;
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .btn-secondary:hover{ border-color:var(--ink); }
+
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-top:40px;
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .stat{
+    background:var(--panel);
+    padding:20px 22px;
+  }
+  .stat b{
+    display:block;
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.5rem;
+    font-weight:600;
+  }
+  .stat span{
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  @media (max-width:640px){
+    .stat-row{ grid-template-columns:1fr; }
+    .hero-frame{ padding:40px 24px 36px; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:88px 0; }
+  section + section{ border-top:1px solid var(--line); }
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:24px;
+    margin-bottom:44px;
+  }
+  .section-head h2{
+    font-size:1.7rem;
+    font-weight:600;
+  }
+  .section-head .index{
+    font-size:0.85rem;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:56px;
+  }
+  .about-grid p{
+    color:var(--ink);
+    font-size:1.02rem;
+    max-width:60ch;
+  }
+  .about-grid p + p{ margin-top:18px; }
+  .about-side{
+    border-left:1px solid var(--line);
+    padding-left:28px;
+  }
+  .about-side h3{
+    font-size:0.95rem;
+    font-weight:600;
+    margin-bottom:14px;
+  }
+  .about-side ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .about-side li{
+    font-size:0.92rem;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .about-side li b{ color:var(--ink); font-weight:500; }
+
+  @media (max-width:800px){
+    .about-grid{ grid-template-columns:1fr; }
+    .about-side{ border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:24px; }
+  }
+
+  /* ---------- EXPERIENCE (timeline, genuine sequence) ---------- */
+  .timeline{ position:relative; }
+  .tl-item{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:28px;
+    padding:28px 0;
+    border-top:1px solid var(--line);
+  }
+  .tl-item:first-child{ border-top:1px solid var(--line); }
+  .tl-when{
+    font-size:0.88rem;
+    color:var(--muted);
+    padding-top:2px;
+  }
+  .tl-role{
+    font-size:1.1rem;
+    font-weight:600;
+    font-family:'Space Grotesk', sans-serif;
+  }
+  .tl-org{
+    color:var(--accent);
+    font-size:0.95rem;
+    margin-top:2px;
+    margin-bottom:14px;
+  }
+  .tl-item ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-width:62ch;
+  }
+  .tl-item li{
+    font-size:0.96rem;
+    color:var(--ink);
+    padding-left:16px;
+    position:relative;
+  }
+  .tl-item li::before{
+    content:"";
+    position:absolute;
+    left:0; top:9px;
+    width:5px; height:5px;
+    background:var(--muted);
+  }
+  @media (max-width:640px){
+    .tl-item{ grid-template-columns:1fr; gap:8px; }
+  }
+
+  /* ---------- PROJECTS (frame cards) ---------- */
+  .frames{
+    display:flex;
+    flex-direction:column;
+    gap:32px;
+  }
+  .frame-card{
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .frame-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 20px;
+    border-bottom:1px solid var(--line);
+    background:#FAFAF8;
+  }
+  .frame-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.88rem;
+    color:var(--muted);
+  }
+  .frame-title span.sq{
+    width:8px;height:8px;background:var(--accent);
+  }
+  .frame-header a{
+    font-size:0.85rem;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:1px;
+  }
+  .frame-header a:hover{ color:var(--accent); border-color:var(--accent); }
+
+  .frame-body{
+    padding:32px 28px 36px;
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:36px;
+  }
+  .frame-body h3{
+    font-size:1.4rem;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .frame-tagline{
+    color:var(--muted);
+    font-size:0.95rem;
+    margin-bottom:18px;
+  }
+  .pill-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .pill{
+    font-size:0.78rem;
+    padding:4px 10px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    border-radius:100px;
+  }
+  .frame-body ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .frame-body li{
+    font-size:0.95rem;
+    padding-left:18px;
+    position:relative;
+  }
+  .frame-body li::before{
+    content:"";
+    position:absolute;
+    left:0; top:8px;
+    width:6px; height:6px;
+    background:var(--accent);
+  }
+  @media (max-width:760px){
+    .frame-body{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .skill-block{
+    background:var(--panel);
+    padding:28px;
+  }
+  .skill-block h3{
+    font-size:0.95rem;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  .skill-block .pill-row .pill{ background:var(--canvas); }
+  @media (max-width:700px){
+    .skill-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- BEYOND / CERT ---------- */
+  .split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .split > div{
+    background:var(--panel);
+    padding:32px;
+  }
+  .split h3{
+    font-size:1rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .split .role{
+    font-size:0.85rem;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+  .split p{
+    color:var(--muted);
+    font-size:0.93rem;
+    max-width:44ch;
+  }
+  @media (max-width:700px){
+    .split{ grid-template-columns:1fr; }
+  }
+
+  .cert-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:22px 26px;
+    margin-top:32px;
+  }
+  .cert-row h3{ font-size:1rem; font-weight:600; }
+  .cert-row span{ font-size:0.86rem; color:var(--muted); display:block; margin-top:2px; }
+  .cert-row a{
+    font-size:0.85rem;
+    text-decoration:none;
+    border-bottom:1px solid var(--ink);
+  }
+  .cert-row a:hover{ color:var(--accent); border-color:var(--accent); }
+
+  /* ---------- EDUCATION ---------- */
+  .edu-item{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .edu-item:last-child{ border-bottom:1px solid var(--line); }
+  .edu-item h3{ font-size:1rem; font-weight:600; }
+  .edu-item p{ font-size:0.9rem; color:var(--muted); margin-top:2px; }
+  .edu-item .when{ font-size:0.88rem; color:var(--muted); white-space:nowrap; }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  .contact-frame{
+    border:1px solid var(--line);
+    background:var(--panel);
+    padding:56px 48px;
+    text-align:left;
+    border-radius:var(--radius);
+    display:grid;
+    grid-template-columns:1.4fr 1fr;
+    gap:32px;
+    align-items:end;
+  }
+  .contact-photo{
+    display:flex;
+    justify-content:center;
+  }
+  .contact-photo img{
+    width:100%;
+    max-width:240px;
+    height:auto;
+    display:block;
+  }
+  @media (max-width:800px){
+    .contact-frame{ grid-template-columns:1fr; }
+    .contact-photo{ order:-1; max-width:180px; margin:0 auto; }
+    .contact-photo img{ max-width:160px; }
+  }
+  .contact-frame h2{
+    font-size:clamp(1.6rem, 4vw, 2.4rem);
+    max-width:16ch;
+    margin-bottom:18px;
+  }
+  .contact-frame p{
+    color:var(--muted);
+    max-width:52ch;
+    margin-bottom:30px;
+  }
+  .contact-links{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  footer{
+    padding:32px 0 48px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="mark"><span class="mark-dot"></span>Vepada Nandini</div>
+    <ul class="navlinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get in touch</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero wrap" id="top">
+    <div class="frame-tag"><span class="dot"></span>Available for UI/UX roles &amp; internships</div>
+    <div class="hero-frame">
+      <div>
+        <h1>I turn ambiguous problems into interfaces people actually enjoy using.</h1>
+        <p class="hero-role">
+          <strong>Vepada Nandini</strong> — UI/UX Designer at StepUpMark, currently designing the LetsHyre hiring platform.
+          Final-year Computer Science student at RGUKT Ongole, working across Figma and front-end fundamentals.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#work">See the work</a>
+          <a class="btn-secondary" href="mailto:vepadanandini123@gmail.com">Email me</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="nandini.png" alt="Portrait of Vepada Nandini">
+      </div>
+      <span class="hero-dim">1440 × 900</span>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <b>8+ mo</b>
+        <span>In product design, at StepUpMark</span>
+      </div>
+      <div class="stat">
+        <b>100+</b>
+        <span>Screens designed for LetsHyre</span>
+      </div>
+      <div class="stat">
+        <b>2</b>
+        <span>End-to-end platforms shipped in Figma</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>About</h2>
+        <span class="index">01 — Background</span>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>
+            I'm a Computer Science engineering student who found design through building things that needed
+            to actually work for someone else. That's still how I approach every project — start with the
+            person using the screen, not the screen itself.
+          </p>
+          <p>
+            At StepUpMark, I design the LetsHyre hiring platform end to end: wireframes, component systems,
+            and the navigation logic that connects employers, candidates, and admins. I came in as an intern
+            in October 2025 and moved into a part-time designer role within two months, largely because I was
+            comfortable working with limited briefs and figuring the rest out through research.
+          </p>
+          <p>
+            Outside design, I host and coordinate events on campus — I led the central hosting committee for
+            RGUKT's annual technical fest and anchor institutional cultural and technical forums. It's a
+            different muscle, but it feeds the same instinct: read a room, communicate clearly, keep things
+            moving.
+          </p>
+        </div>
+        <div class="about-side">
+          <h3>Currently</h3>
+          <ul>
+            <li><span>Role</span> <b>UI/UX Designer, StepUpMark</b></li>
+            <li><span>Studying</span> <b>B.Tech CSE, RGUKT Ongole</b></li>
+            <li><span>Based in</span> <b>Andhra Pradesh, India</b></li>
+            <li><span>Graduating</span> <b>2027</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+        <span class="index">02 — StepUpMark Marketing Innovations</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-when">Dec 2025 — Present</div>
+          <div>
+            <div class="tl-role">UI/UX Designer, Part-time</div>
+            <div class="tl-org">StepUpMark Marketing Innovations Pvt. Ltd. · Hyderabad</div>
+            <ul>
+              <li>Own the LetsHyre platform's UI end to end — wireframes, layout redesigns, color systems, and iterative refinements — while balancing the work around a full academic schedule.</li>
+              <li>Run independent competitive research on similar hiring platforms to fill gaps left by limited internal data, then translate those findings into information architecture and navigation flows.</li>
+              <li>Leading the redesign of the company's client-facing website, focused on engagement and conversion.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-when">Oct 2025 — Nov 2025</div>
+          <div>
+            <div class="tl-role">UI/UX Designer Intern</div>
+            <div class="tl-org">StepUpMark Marketing Innovations Pvt. Ltd. · Hyderabad</div>
+            <ul>
+              <li>Designed wireframes and layout iterations for LetsHyre based on direct feedback from cross-functional teams.</li>
+              <li>Picked up Figma's Auto Layout, component variants, and reusable component systems fast enough to move into a paid role within two months.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <span class="index">03 — Two case studies</span>
+      </div>
+      <div class="frames">
+
+        <!-- LetsHyre -->
+        <div class="frame-card">
+          <div class="frame-header">
+            <div class="frame-title"><span class="sq"></span>Frame — LetsHyre</div>
+            <!-- Replace # with your real Figma share link -->
+            <a href="#" target="_blank" rel="noopener">View Figma file</a>
+          </div>
+          <div class="frame-body">
+            <div>
+              <h3>LetsHyre</h3>
+              <p class="frame-tagline">AI-powered hiring platform · Solo product design</p>
+              <div class="pill-row">
+                <span class="pill">Figma</span>
+                <span class="pill">Auto Layout</span>
+                <span class="pill">Design systems</span>
+                <span class="pill">User flows</span>
+              </div>
+            </div>
+            <ul>
+              <li>Took full ownership of a 100+ screen web app, moving from early wireframes to high-fidelity, componentized Figma screens with no existing design system to build on.</li>
+              <li>Designed persona-specific flows and dashboards for three distinct user types — employers, candidates, and admins — each with different goals and permissions.</li>
+              <li>Built the information architecture from scratch after competitive research, since the platform had limited existing user data to work from.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Digital Photoframes -->
+        <div class="frame-card">
+          <div class="frame-header">
+            <div class="frame-title"><span class="sq"></span>Frame — Digital Photoframes</div>
+            <!-- Replace # with your real Figma share link -->
+            <a href="#" target="_blank" rel="noopener">View Figma file</a>
+          </div>
+          <div class="frame-body">
+            <div>
+              <h3>Digital Photoframes</h3>
+              <p class="frame-tagline">E-commerce platform · Freelance</p>
+              <div class="pill-row">
+                <span class="pill">Figma</span>
+                <span class="pill">Prototyping</span>
+                <span class="pill">Dashboards</span>
+                <span class="pill">Client collaboration</span>
+              </div>
+            </div>
+            <ul>
+              <li>Designed the full commerce workflow for a client, from product discovery and customization through checkout.</li>
+              <li>Built separate permission-based dashboards for administrators and staff, alongside the customer-facing storefront.</li>
+              <li>Ran iterative wireframing and clickable-prototype reviews directly with the client to keep the design aligned with business requirements at each stage.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Skills</h2>
+        <span class="index">04 — Tools &amp; craft</span>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-block">
+          <h3>Design</h3>
+          <div class="pill-row">
+            <span class="pill">Wireframing</span>
+            <span class="pill">High-fidelity prototyping</span>
+            <span class="pill">Auto Layout</span>
+            <span class="pill">Component variants</span>
+            <span class="pill">Visual hierarchy</span>
+            <span class="pill">Typography</span>
+            <span class="pill">Color systems</span>
+            <span class="pill">Information architecture</span>
+            <span class="pill">User flows</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h3>Tools</h3>
+          <div class="pill-row">
+            <span class="pill">Figma</span>
+            <span class="pill">AI-assisted design tools</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h3>Front-end &amp; languages</h3>
+          <div class="pill-row">
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">Python</span>
+            <span class="pill">MySQL</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h3>Working style</h3>
+          <div class="pill-row">
+            <span class="pill">Autonomous research</span>
+            <span class="pill">Cross-functional collaboration</span>
+            <span class="pill">Time management</span>
+            <span class="pill">Ownership of ambiguous briefs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEYOND DESIGN + CERT -->
+  <section id="beyond">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Beyond design</h2>
+        <span class="index">05 — Public speaking &amp; leadership</span>
+      </div>
+      <div class="split">
+        <div>
+          <h3>Core Hosting Committee Lead</h3>
+          <div class="role">Ornate — RGUKT's Annual Technical Fest</div>
+          <p>Led the central team coordinating every committee involved in organizing the fest.</p>
+        </div>
+        <div>
+          <h3>Institutional Event Anchor</h3>
+          <div class="role">Cultural &amp; Technical Forums, RGUKT</div>
+          <p>Hosted major campus fests and managed live stage audiences across cultural and technical events.</p>
+        </div>
+      </div>
+
+      <div class="cert-row">
+        <div>
+          <h3>UI/UX Design Mastery</h3>
+          <span>JUNO · Issued May 27, 2025</span>
+        </div>
+        <!-- Replace # with your real certificate link -->
+        <a href="#" target="_blank" rel="noopener">View certificate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Education</h2>
+        <span class="index">06 — RGUKT</span>
+      </div>
+      <div class="edu-item">
+        <div>
+          <h3>B.Tech, Computer Science Engineering</h3>
+          <p>Rajiv Gandhi University of Knowledge Technologies, Ongole</p>
+        </div>
+        <div class="when">2023 — 2027 (expected)</div>
+      </div>
+      <div class="edu-item">
+        <div>
+          <h3>Pre-University Course, MPC</h3>
+          <p>Rajiv Gandhi University of Knowledge Technologies, RK Valley · 9.7 CGPA</p>
+        </div>
+        <div class="when">2021 — 2023</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-frame">
+        <div>
+          <h2>Looking for a UI/UX designer to bring on board?</h2>
+          <p>
+            I'm currently open to internships and design roles where I can keep working on real, shipped
+            products. Reach out and I'll get back to you quickly.
+          </p>
+          <div class="contact-links">
+            <a class="btn-primary" href="mailto:vepadanandini123@gmail.com">vepadanandini123@gmail.com</a>
+            <a class="btn-secondary" href="tel:+918919323499">+91 89193 23499</a>
+            <a class="btn-secondary" href="https://www.linkedin.com/in/vepadanandini" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+        <div class="contact-photo">
+          <img src="nandini.png" alt="Portrait of Vepada Nandini">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>Vepada Nandini — UI/UX Designer</span>
+  <span>Vijayawada East, Andhra Pradesh, India</span>
+</footer>
+
+</body>
+</html>
