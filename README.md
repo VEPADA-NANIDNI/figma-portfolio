@@ -23,11 +23,11 @@ This repository contains my UI/UX design projects created in **Figma**, includin
 ---
 
 
-## 🔗 Figma Portfolio
+## 🔗 My Portfolio
 
 For access to my complete collection of UI/UX projects:
 
-**[View My Figma Portfolio](PASTE_YOUR_FIGMA_PORTFOLIO_LINK_HERE)**
+**[View My Portfolio](https://figma-portfolio-gamma.vercel.app/)**
 
 ---
 
